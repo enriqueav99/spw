@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  namespace: nsmongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: node
+          image: enriqueav99/node-full
+          ports:
+            - containerPort: 8181
+          env:
+            - name: MONGODB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-crd-admin-system
+                  key: connectionString.standardSrv 
+        
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-app
+  namespace: nsmongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-app
+  template:
+    metadata:
+      labels:
+        app: angular-app
+    spec:
+      containers:
+        - name: angular
+          image: enriqueav99/angular-full
+          ports:
+            - containerPort: 80
+                     
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-service
+  namespace: nsmongo
+spec:
+  selector:
+    app: node-app
+  ports:
+    - protocol: TCP
+      port: 8181
+      targetPort: 8181 
+  type: LoadBalancer
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-service
+  namespace: nsmongo
+spec:
+  selector:
+    app: angular-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80 
+  type: LoadBalancer
+
+  
