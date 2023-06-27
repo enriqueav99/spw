@@ -1,0 +1,30 @@
+<h3>Actualiza el producto {{producto.nombre}}</h3>
+<div class="input-group mb3">
+    <label for="nombre">Nombre:</label>
+    <input type="text"
+    id="nombre"
+    class="form-control"
+    placeholder={{producto.nombre}}
+    #nombre>
+
+    <label for="proveedor">Proveedor:</label>
+    <input type="text"
+    id= "proveedor"
+    class="form-control"
+    placeholder={{producto.proveedor}}
+    #proveedor>
+
+    <label for="stock"> Stock:</label>
+    <input type="number"
+    placeholder={{producto.stock}}
+    class="form-control"
+    #stock>
+
+    <span (click)="actualizarProducto(nombre, proveedor, stock)" class="input-group-text" id="basic-addon2"> Actualizar </span>
+
+</div>
+<hr>
+Si has llegado aqui pulsando desde el producto estando en favoritos no funciona alojado en firebase, sin embargo en local funciona.
+<br>
+Si has llegado desde la pagina principal no deberia haber problema, es raro porque los dos llaman a lo mismo
+

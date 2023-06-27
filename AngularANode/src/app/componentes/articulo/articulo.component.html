@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-4"> {{producto.nombre}}</div>
+    <div class="col-3" > {{producto.proveedor}} </div>
+    <div class="col-2" > {{producto.stock}} </div>
+    <div class="col-1"  (click)="annadirFav(producto._id)"> <i [ngClass]="{'bi-star-fill': isFavorito, 'bi-star': !isFavorito}"></i> </div>
+    <div class="col-1"  (click)="borrar(producto)"> <i class="bi bi-trash3-fill"></i> </div>
+    <div class="col-1"   (click)="actualizar(producto._id)"> <i class="bi bi-arrow-repeat"></i>  </div>
+</div> 

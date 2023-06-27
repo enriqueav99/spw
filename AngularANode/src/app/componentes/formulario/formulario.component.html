@@ -1,0 +1,22 @@
+<h3>Introduce un Producto nuevo</h3>
+<div class="input-group mb3">
+    <input type="text"
+    class="form-control"
+    placeholder="Cual es el nombre"
+    #nombre>
+
+    <input type="text"
+    class="form-control"
+    placeholder="Introduce el proveedor"
+    #proveedor>
+
+ 
+    <input type="number"
+    placeholder="Introduce el stock"
+    class="form-control"
+    #stock
+    >
+
+    <span (click)="annadirProducto(nombre, proveedor, stock)" class="input-group-text" id="basic-addon2"> Añadir </span>
+</div>
+<hr>

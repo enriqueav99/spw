@@ -1,0 +1,17 @@
+<h3> Listado de favoritos</h3>
+Si estas aqui en Google chrome lo mismo sale algun elemento vacio y da errores, recomiendo usar safari
+    <ng-container *ngIf="listadoProductos.length>0; else elseBlock">
+        <ul class="list-group">
+            <app-articulo-fav
+            class = "list-group-item"
+            *ngFor="let producto of listadoProductos" 
+            [producto]="producto"
+            (eliminarFavo)="eliminarFav($event)">
+            
+            </app-articulo-fav>
+            </ul>
+    
+    </ng-container>
+    <ng-template #elseBlock>
+        <h4>No tienes favoritos </h4>
+      </ng-template>
